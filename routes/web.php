@@ -27,6 +27,9 @@ Route::get('/redirect/{service}', 'SocialiteController@redirect');
 Route::get('/callback/{service}', 'SocialiteController@callback');
 
 
+Route::get('haitam' , 'HaitamController@haitam');
+
+
 
 
 
