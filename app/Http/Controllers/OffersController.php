@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Offer;
+use App\User;
 use Illuminate\Http\Request;
 
-class UsersController extends Controller
+class OffersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return 'hi index';
+        //
     }
 
     /**
@@ -23,8 +25,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return 'hi create';
-        
+        return view('Offers.create');
     }
 
     /**
@@ -35,7 +36,14 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        return 'hi store';
+        Offer::create([
+
+            'name'   => $request->name ,
+            'prise'  => $request->prise , 
+            'dituls' => $request->dituls , 
+
+        ]);
+        return 'Seve Good';
     }
 
     /**
@@ -46,8 +54,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        return 'hi show';
-        
+        //
     }
 
     /**
