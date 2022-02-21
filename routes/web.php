@@ -14,25 +14,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
- Route::get('/', function () {
-     return view('welcome');
-});
+
 
 Auth::routes(['verify' => true]);
 
 
-// Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
-
-// Route::get('/redirect/{service}', 'SocialiteController@redirect');
-// Route::get('/callback/{service}', 'SocialiteController@callback');
 
 
-//Route::namespace('Admin')->group(['prefix' => 'offers'], function(){
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){ //...
 
- //  Route::resource('offers' , 'OffersController' );
-//});
+        Route::get('/', function () {
+            return view('welcome');
+       });
+    
+        // Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+    
+        Route::resource('offers', OffersController::class);
+    });
 
-Route::resource('offers', OffersController::class);
+
+
+
+  
+
 
 
 
