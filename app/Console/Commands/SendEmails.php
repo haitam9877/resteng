@@ -2,24 +2,26 @@
 
 namespace App\Console\Commands;
 
+use App\Mail\UsersEmail;
 use App\User;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Mail;
 
-class Scheduling extends Command
+class SendEmails extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'user:exdnt';
+    protected $signature = 'users:emails';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'schedulingdesk';
+    protected $description = 'emaildescription';
 
     /**
      * Create a new command instance.
@@ -38,14 +40,21 @@ class Scheduling extends Command
      */
     public function handle()
     {
-        // $users = User::where('expair', 0)->get();
 
-        // foreach($users as $user){
+        $data = ['php' => 'haitam you good' , 'body' => 'haitam hhhhhh'];
+        $emails = User::pluck('email')->toArray();
 
-        //     $user -> update(['expair' => 1]);
+        foreach($emails as $email){
 
-        // }
+            Mail::To($email)->send(new UsersEmail($data));
 
 
+        }
+        
+
+        
+        
+
+        
     }
 }

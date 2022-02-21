@@ -2,7 +2,7 @@
 
 namespace App\Console;
 
-use App\Console\Commands\Scheduling;
+use App\Console\Commands\SendEmails;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -14,7 +14,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Scheduling::class
+        
+       SendEmails::class
+      
     ];
 
     /**
@@ -25,7 +27,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-         $schedule->command('user:exdnt')->everyMinute();
+        // $schedule->command('user:exdnt')->everyMinute();
+
+         $schedule->command('users:emails')->everyMinute();
+
     }
 
     /**

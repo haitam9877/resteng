@@ -18,16 +18,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();//['verify' => true]);
+Auth::routes(['verify' => true]);
 
 
-Route::get('/home', 'HomeController@index')->name('home'); //->middleware('verified');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 Route::get('/redirect/{service}', 'SocialiteController@redirect');
 Route::get('/callback/{service}', 'SocialiteController@callback');
 
 
-Route::get('haitam' , 'HaitamController@haitam');
 
 
 

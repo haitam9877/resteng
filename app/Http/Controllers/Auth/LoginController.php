@@ -47,7 +47,7 @@ class LoginController extends Controller
         $nameofnam = '';
 
 
-        $falid =  filter_var($value,FILTER_VALIDATE_EMAIL) ? 'email' : 'name' ;
+        $falid =  filter_var($value,FILTER_VALIDATE_EMAIL) ? 'email' : 'phone' ;
 
        
 
