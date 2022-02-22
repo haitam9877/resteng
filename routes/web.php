@@ -31,7 +31,7 @@ Route::group(
             return view('welcome');
        });
     
-        // Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+        Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
     
         Route::resource('offers', OffersController::class);
     });
