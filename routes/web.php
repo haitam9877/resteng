@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ProdactsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,20 +29,29 @@ Route::group(
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
     ], function(){ //...
 
-        Route::get('/', function () {
-            return view('welcome');
-       });
+       Route::get('/', function () {
+           return view('welcome');
+      });
     
-        Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+       Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
     
-        Route::resource('offers', OffersController::class);
+       Route::resource('offers', OffersController::class);
+
+
+    //    ***************************Prodacts****************************************************
+      
+
+
+        Route::resource('prodacts', 'ProdactsController');
+        
+
+
+
     });
 
 
 
-
   
-
 
 
 

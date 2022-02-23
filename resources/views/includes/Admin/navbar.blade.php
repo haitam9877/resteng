@@ -10,32 +10,33 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-           
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="#">{{__('navbar.home')}}</a>
-          </li>
 
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="#">{{__('navbar.about')}}</a>
-          </li>
+        
+        
+        
 
-          @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+
+        <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="#">{{__('admin/dashbord.dashbord')}}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="#">{{__('admin/dashbord.profile')}}</a>
+        </li>
+        
+       
+         
+       
+
+
+    
+    
+        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
           <li  class="nav-item">
               <a class="nav-link " rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                   {{ $properties['native'] }}
               </a>
           </li>
       @endforeach
-         
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="{{__('navbar.search')}}" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">{{__('navbar.search')}}</button>
-        </form>
-
-
-    
-    
-       
           
         </ul>
 
@@ -46,9 +47,9 @@
                   <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
               </li>
               @if (Route::has('register'))
-                  <li class="nav-item">
-                      <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                  </li>
+
+             
+                 
               @endif
           @else
               <li class="nav-item dropdown">
@@ -68,6 +69,7 @@
                       </form>
                   </div>
               </li>
+             
           @endguest
       </ul>
         
