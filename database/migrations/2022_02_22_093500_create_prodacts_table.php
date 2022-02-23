@@ -18,7 +18,7 @@ class CreateProdactsTable extends Migration
             $table->string('name');
             $table->string('prise');
             $table->string('store');
-            $table->string('Country');
+            $table->string('country');
             $table->timestamps();
         });
     }

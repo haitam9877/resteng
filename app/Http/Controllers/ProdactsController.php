@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\prodact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ProdactsController extends Controller
 {
@@ -11,10 +13,10 @@ class ProdactsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
+    // public function index()
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -23,7 +25,7 @@ class ProdactsController extends Controller
      */
     public function create()
     {
-        //
+        return view('Admin.Prodacts.prodact');
     }
 
     /**
@@ -31,10 +33,53 @@ class ProdactsController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+         
      */
+
+
+     
+   
+       
+
+   
+    
     public function store(Request $request)
     {
-        //
+        
+        $roles = [
+
+            'name' => ['required', 'string', 'max:255'],
+            'prise' => ['required', ' numeric', 'min:6'],
+            'store' => ['required', 'numeric', 'min:6'],
+            'country' => ['required', 'string','max:20'],
+        ];
+
+        $validtour = Validator::make($request->all(), $roles , [
+
+            'name.required' => __('validaion.name required'),
+            'prise.required' => __('validaion.prise required'),
+            'store.required' => __('validaion.store required'),
+            'country.required' => __('validaion.country required'),
+
+
+        ]);
+            if($validtour->fails()){
+                return redirect()->back()->withErrors($validtour)->withInput($request->all());
+
+            }
+
+
+
+
+        prodact::create([
+            "name" => $request->name,
+            "prise" => $request->prise,
+            "store" => $request->store,
+            "country" => $request->country,
+
+        ]);
+
+        return redirect()->back()->with(['secs' => 'Good']);
     }
 
     /**
